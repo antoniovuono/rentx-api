@@ -1,5 +1,4 @@
 import { parse as csvParse } from "csv-parse";
-import { response } from "express";
 import fs from "fs";
 
 import { ICategoriesRepository } from "../../repositories/ICategoriesRepository";
