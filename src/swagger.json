@@ -1,0 +1,11 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "RENTX-API - Documentation",
+        "description": "We have here centralized all necessary information to consume this API. Any questions, please contact the developer.",
+        "version": "1.0.0",
+        "contact": { 
+            "email": "antoniosvuono@icloud.com"
+        }
+    }
+}
