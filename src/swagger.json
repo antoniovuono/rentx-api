@@ -7,5 +7,43 @@
         "contact": { 
             "email": "antoniosvuono@icloud.com"
         }
+    }, 
+    "paths": {
+        "/categories": {
+            "post": {
+                "tags": ["Category"],
+                "summary": "Create a category",
+                "description": "This route it`s used to create a category.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "name": "Category name sample",
+                                    "description": "Category name description sample"
+                                }
+                            }
+                        }
+                    }
+                },
+                "response": {
+                    "201": {
+                        "description": "Category created successfully"
+                    },
+                    "500": {
+                        "description": "Category already exists"
+                    }
+                }
+            }
+        }
     }
 }
