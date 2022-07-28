@@ -28,8 +28,8 @@
                                     }
                                 },
                                 "example": {
-                                    "name": "Category name sample",
-                                    "description": "Category name description sample"
+                                    "name": "SUV",
+                                    "description": "Carros esportivos com perfil mais alto e off-road."
                                 }
                             }
                         }
@@ -72,6 +72,67 @@
                     }
                 }
             }
+        },
+        "/categories/import": {
+            "post": {
+                "tags": ["Category"],
+                "summary": "Upload a new category",
+                "description": "This route it`s responsable to upload a file with a new categoires list.",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data":  {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "file": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                }
+            }
+        },
+        "/specifications": {
+            "post": {
+                "tags": ["Specification"],
+                "summary": "Create a new specification",
+                "description": "This route it`s responsable to create a specification.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    }
+                                }, 
+                                 "example": {
+                                        "name": "Câmbio automático",
+                                        "description": "Carro com câmbio automático"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "responses": {
+                        "201": {
+                            "description": "Specifications created successfully"
+                        }, 
+                            "500": "Specification already exists"
+                    }
+                }
+            }
         }
     }
-}

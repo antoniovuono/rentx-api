@@ -11,7 +11,7 @@ class ImportCategoryController {
 
     await importCategoryUseCase.execute(file);
 
-    return response.json("File successfully uploaded");
+    return response.status(201).json("File successfully uploaded");
   }
 }
 
