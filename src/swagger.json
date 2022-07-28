@@ -35,7 +35,7 @@
                         }
                     }
                 },
-                "response": {
+                "responses": {
                     "201": {
                         "description": "Category created successfully"
                     },
@@ -48,7 +48,7 @@
                 "tags": ["Category"],
                 "summary": "List all categories",
                 "description": "This route it`s used to list all categories.",
-                "response": {
+                "responses": {
                     "200": {
                         "description": "Categories listed successfully",
                         "content": {
