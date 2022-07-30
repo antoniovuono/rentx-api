@@ -3,8 +3,9 @@ import { Repository } from "typeorm";
 import { AppDataSource } from "../../../../database";
 import { ICreateUsersDTO } from "../../dtos/ICreateUsersDTO";
 import { User } from "../../entities/User";
+import { IUsersRepository } from "../IUsersRepository";
 
-class UserRepository implements UserRepository {
+class UsersRepository implements IUsersRepository {
   private repository: Repository<User>;
 
   constructor() {
@@ -31,6 +32,11 @@ class UserRepository implements UserRepository {
     const user = await this.repository.findOneBy({ email });
     return user;
   }
+
+  async findUserById(id: string): Promise<User> {
+    const user = await this.repository.findOneBy({ id });
+    return user;
+  }
 }
 
-export { UserRepository };
+export { UsersRepository };
