@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/extensions
 import { AppError } from "../../../../../errors/AppError";
 import { InMemoryCategoriesRepository } from "../../../repositories/in-memory/InMemoryCategoriesRepository";
 import { CreateCategoryUseCase } from "../CreateCategoryUseCase";
