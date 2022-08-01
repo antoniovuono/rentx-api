@@ -15,7 +15,6 @@ class UpdateUserAvatarController {
 
     return response
       .status(204)
-      .send()
       .json({ message: "Avatar inserted to user successfully" });
   }
 }
