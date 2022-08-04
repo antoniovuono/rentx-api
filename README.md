@@ -36,9 +36,15 @@
 # Cadastro de imagem do carro:
 **RF** => REQUESITOS FUNCIONAIS:
 => Deve ser possível cadastrar a imagem do carro.
-
 **RNF** => REQUESITOS NÃO FUNCIONAIS:
 => Utilizar o multer para o upload dos arquivos
-
 **RNF** => REGRAS DE NEGÓCIO:
 => O usuário pode cadastrar mais de uma imagem para determinado carro.
+
+# Aluguel de carro:
+**RF** => REQUESITOS FUNCIONAIS:
+=> Deve ser possível cadastrar um aluguel
+**RNF** => REGRAS DE NEGÓCIO:
+=> O aluguel deve ter duração minima de 24 horas.
+=> Não deve ser possível cadastrar um novo aluguel caso já exista um aberto para um usuário.
+=> Não deve ser possível cadastrar um novo aluguel caso já exista um aberto para um mesmo carro.
