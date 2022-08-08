@@ -9,7 +9,7 @@ export const AppDataSource = new DataSource({
   password: "admin123",
   database: "rentx-api",
   entities: ["./src/modules/**/entities/*.ts"],
-  migrations: ["./src/database/migrations/*.ts"],
+  migrations: ["./src/shared/infra/typeorm/migrations/*.ts"],
 });
 
 export function createConnection(
