@@ -1,0 +1,3 @@
+class CarsRepository {}
+
+export { CarsRepository };
