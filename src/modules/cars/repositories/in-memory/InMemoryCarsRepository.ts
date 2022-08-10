@@ -13,7 +13,7 @@ class InMemoryCarsRepository implements ICarsRepository {
     fine_amount,
     brand,
     category_id,
-  }: ICreateCarDTO): Promise<void> {
+  }: ICreateCarDTO): Promise<Car> {
     const car = new Car();
 
     Object.assign(car, {
@@ -27,6 +27,16 @@ class InMemoryCarsRepository implements ICarsRepository {
     });
 
     this.cars.push(car);
+
+    return car;
+  }
+
+  async findByLicensePlate(license_plate: string): Promise<Car> {
+    const carAlreadyExists = this.cars.find(
+      (car) => car.license_plate === license_plate
+    );
+
+    return carAlreadyExists;
   }
 }
 

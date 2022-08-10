@@ -1,3 +1,4 @@
+import { AppError } from "../../../../../shared/errors/AppError";
 import { InMemoryCarsRepository } from "../../../repositories/in-memory/InMemoryCarsRepository";
 import { CreateCarUseCase } from "../CreateCarUseCase";
 
@@ -11,7 +12,7 @@ describe("Create car", () => {
   });
 
   it("Should be able to create a new car", async () => {
-    await createCarUseCase.execute({
+    const car = await createCarUseCase.execute({
       name: "Car Example",
       description: "Car description example",
       daily_rate: 100,
@@ -20,5 +21,45 @@ describe("Create car", () => {
       brand: "Brand Example",
       category_id: "category example",
     });
+
+    expect(car).toHaveProperty("id");
+  });
+
+  it("Should not be able to create a car with a same license_plate", () => {
+    expect(async () => {
+      await createCarUseCase.execute({
+        name: "Car Example 1",
+        description: "Car description example",
+        daily_rate: 100,
+        license_plate: "ABC-1322",
+        fine_amount: 60,
+        brand: "Brand Example",
+        category_id: "category example",
+      });
+
+      await createCarUseCase.execute({
+        name: "Car Example 2",
+        description: "Car description example",
+        daily_rate: 100,
+        license_plate: "ABC-1322",
+        fine_amount: 60,
+        brand: "Brand Example",
+        category_id: "category example",
+      });
+    }).rejects.toBeInstanceOf(AppError);
+  });
+
+  it("Should not be able to create a car with available true by default", async () => {
+    const car = await createCarUseCase.execute({
+      name: "Car Example 1",
+      description: "Car description example",
+      daily_rate: 100,
+      license_plate: "ABCD-1322",
+      fine_amount: 60,
+      brand: "Brand Example",
+      category_id: "category example",
+    });
+
+    expect(car.available).toBe(true);
   });
 });

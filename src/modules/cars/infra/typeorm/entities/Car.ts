@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryColumn, TableForeignKey } from "typeorm";
+import { Column, Entity, PrimaryColumn } from "typeorm";
 import { v4 as uuidv4 } from "uuid";
 
 @Entity("cars")
@@ -36,6 +36,8 @@ class Car {
   constructor() {
     if (!this.id) {
       this.id = uuidv4();
+      this.available = true;
+      this.created_at = new Date();
     }
   }
 }
