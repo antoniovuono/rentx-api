@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "ts-node-dev --transpile-only --inspect --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
     "typeorm-run": "ts-node-dev ./node_modules/typeorm/cli.js -d src/shared/infra/typeorm/index.ts",
-    "test": "jest"
+    "test": "jest",
+    "seed:admin": "ts-node-dev src/shared/infra/typeorm/seed/admin.ts"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
