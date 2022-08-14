@@ -9,7 +9,7 @@ describe("List cars", () => {
   listCarsUseCase = new ListCarsUseCase(inMemoryCarsRepository);
 
   it("Should be able to list all available cars", async () => {
-    await inMemoryCarsRepository.create({
+    const car = await inMemoryCarsRepository.create({
       name: "Car Example 2",
       description: "Car description example",
       daily_rate: 100,
@@ -19,16 +19,24 @@ describe("List cars", () => {
       category_id: "category example",
     });
 
-    await inMemoryCarsRepository.create({
-      name: "Car Example 1",
+    const cars = await listCarsUseCase.execute({});
+    expect(cars).toEqual([car]);
+  });
+
+  it("Should be able to list available cars by name", async () => {
+    const car = await inMemoryCarsRepository.create({
+      name: "Car Example 2",
       description: "Car description example",
       daily_rate: 100,
       license_plate: "ABC-1322",
       fine_amount: 60,
-      brand: "Brand Example",
+      brand: "Brand Example Test",
       category_id: "category example",
     });
-    const cars = await listCarsUseCase.execute();
-    console.log(cars);
+
+    const cars = await listCarsUseCase.execute({
+      brand: "Brand Example Test",
+    });
+    expect(cars).toEqual([car]);
   });
 });
