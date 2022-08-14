@@ -38,6 +38,11 @@ class InMemoryCarsRepository implements ICarsRepository {
 
     return carAlreadyExists;
   }
+
+  async list(): Promise<Car[]> {
+    const carList = await this.cars.filter((car) => car.available === true);
+    return carList;
+  }
 }
 
 export { InMemoryCarsRepository };
