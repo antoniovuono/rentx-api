@@ -5,38 +5,57 @@ let listCarsUseCase: ListCarsUseCase;
 let inMemoryCarsRepository: InMemoryCarsRepository;
 
 describe("List cars", () => {
-  inMemoryCarsRepository = new InMemoryCarsRepository();
-  listCarsUseCase = new ListCarsUseCase(inMemoryCarsRepository);
+  beforeEach(() => {
+    inMemoryCarsRepository = new InMemoryCarsRepository();
+    listCarsUseCase = new ListCarsUseCase(inMemoryCarsRepository);
+  });
 
   it("Should be able to list all available cars", async () => {
     const car = await inMemoryCarsRepository.create({
-      name: "Car Example 2",
+      name: "Car Example 1",
       description: "Car description example",
       daily_rate: 100,
-      license_plate: "ABC-1322",
+      license_plate: "DFC-1122",
       fine_amount: 60,
-      brand: "Brand Example",
-      category_id: "category example",
+      brand: "car_brand_example",
+      category_id: "category_id",
     });
 
-    const cars = await listCarsUseCase.execute({});
-    expect(cars).toEqual([car]);
+    const carsList = await listCarsUseCase.execute({});
+    expect(carsList).toEqual([car]);
   });
 
-  it("Should be able to list available cars by name", async () => {
+  it("Should be able to list all available cars by name", async () => {
     const car = await inMemoryCarsRepository.create({
       name: "Car Example 2",
       description: "Car description example",
       daily_rate: 100,
-      license_plate: "ABC-1322",
+      license_plate: "DBC-1132",
       fine_amount: 60,
-      brand: "Brand Example Test",
-      category_id: "category example",
+      brand: "car_brand_example",
+      category_id: "category_id",
     });
 
-    const cars = await listCarsUseCase.execute({
-      brand: "Brand Example Test",
+    const carsListByName = await listCarsUseCase.execute({
+      name: car.name,
     });
-    expect(cars).toEqual([car]);
+    expect(carsListByName).toEqual([car]);
+  });
+
+  it("Should be able to list all available cars by brand", async () => {
+    const car = await inMemoryCarsRepository.create({
+      name: "Car Example 3",
+      description: "Car description example",
+      daily_rate: 100,
+      license_plate: "DBC-1132",
+      fine_amount: 60,
+      brand: "car_brand_example",
+      category_id: "category_id",
+    });
+
+    const carListByBrand = await listCarsUseCase.execute({
+      brand: car.brand,
+    });
+    expect(carListByBrand).toEqual([car]);
   });
 });
