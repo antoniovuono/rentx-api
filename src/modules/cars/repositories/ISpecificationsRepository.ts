@@ -8,6 +8,7 @@ interface ISpecificationsRepositoryDTO {
 interface ISpecificationsRepository {
   create({ name, description }: ISpecificationsRepositoryDTO): Promise<void>;
   findBySpecificationName(name: string): Promise<Specification>;
+  findById(ids: string[]): Promise<Specification[]>;
 }
 
 export { ISpecificationsRepository, ISpecificationsRepositoryDTO };
