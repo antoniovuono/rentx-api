@@ -4,7 +4,7 @@ import {
   ISpecificationsRepositoryDTO,
 } from "../ISpecificationsRepository";
 
-class InMemorySpecifications implements ISpecificationsRepository {
+class InMemorySpecificationsRepository implements ISpecificationsRepository {
   specifications: Specification[] = [];
 
   async create({
@@ -38,4 +38,4 @@ class InMemorySpecifications implements ISpecificationsRepository {
   }
 }
 
-export { InMemorySpecifications };
+export { InMemorySpecificationsRepository };
