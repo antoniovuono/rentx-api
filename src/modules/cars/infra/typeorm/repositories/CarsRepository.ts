@@ -12,25 +12,8 @@ class CarsRepository implements ICarsRepository {
     this.repository = AppDataSource.getRepository(Car);
   }
 
-  async create({
-    name,
-    description,
-    daily_rate,
-    license_plate,
-    fine_amount,
-    brand,
-    category_id,
-    specifications,
-  }: ICreateCarDTO): Promise<Car> {
-    const car = this.repository.create({
-      name,
-      description,
-      daily_rate,
-      license_plate,
-      fine_amount,
-      brand,
-      category_id,
-    });
+  async create(data: ICreateCarDTO): Promise<Car> {
+    const car = this.repository.create(data);
 
     await this.repository.save(car);
 
