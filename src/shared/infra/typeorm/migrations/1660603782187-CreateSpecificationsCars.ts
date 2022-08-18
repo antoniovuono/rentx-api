@@ -9,11 +9,6 @@ export class CreateSpecificationsCars1660603782187
         name: "specifications_cars",
         columns: [
           {
-            name: "id",
-            type: "uuid",
-            isPrimary: true,
-          },
-          {
             name: "car_id",
             type: "uuid",
             isNullable: true,
