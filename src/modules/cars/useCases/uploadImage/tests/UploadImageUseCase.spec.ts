@@ -1,1 +1,0 @@
-describe("Upload car images", () => {});

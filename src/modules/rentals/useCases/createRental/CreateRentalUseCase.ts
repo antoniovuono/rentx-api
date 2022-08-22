@@ -1,15 +1,49 @@
-interface IRequest {
-  user_id: string;
-  car_id: string;
-  expected_return_date: string;
-}
+import "reflect-metadata";
+import { inject, injectable } from "tsyringe";
 
+import { AppError } from "../../../../shared/errors/AppError";
+import { ICreateRentalDTO } from "../../dtos/ICreateRentalDTO";
+import { Rental } from "../../infra/entities/Rental";
+import { IRentalsRepository } from "../../repositories/IRentalsRepository";
+
+@injectable()
 class CreateRentalUseCase {
-  execute({ user_id, car_id, expected_return_date }: IRequest): Promise<void> {}
+  constructor(
+    @inject("RentalsRepository")
+    private rentalsRepository: IRentalsRepository
+  ) {}
 
-  // Não deve ser possível cadastrar um novo aluguel caso já exista um aberto para o mesmo carro.
-  // Não deve ser possível cadastrar um novo aluguel caso já exista um em aberto para o mesmo usuário.
-  // Aluguel deve ter duração minima de 24 horas.
+  async execute({
+    user_id,
+    car_id,
+    expected_return_date,
+  }: ICreateRentalDTO): Promise<Rental> {
+    const minimumRentalsTime = 24;
+
+    const carIsUnavailable = await this.rentalsRepository.findRentalByCar(
+      car_id
+    );
+
+    if (carIsUnavailable) {
+      throw new AppError("Car is not available to rentals!", 400);
+    }
+
+    const userIsUnavailable = await this.rentalsRepository.findOpenRentalByUser(
+      user_id
+    );
+
+    if (userIsUnavailable) {
+      throw new AppError("there's a rental in progress for user", 400);
+    }
+
+    const rental = await this.rentalsRepository.create({
+      user_id,
+      car_id,
+      expected_return_date,
+    });
+
+    return rental;
+  }
 }
 
 export { CreateRentalUseCase };
