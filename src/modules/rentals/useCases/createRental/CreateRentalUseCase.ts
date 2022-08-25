@@ -1,5 +1,3 @@
-import "reflect-metadata";
-
 import { inject, injectable } from "tsyringe";
 
 import { IDateProvider } from "../../../../shared/container/providers/DateProvider/IDateProvider";
