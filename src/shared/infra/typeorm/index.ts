@@ -1,4 +1,3 @@
-import "reflect-metadata";
 import { DataSource } from "typeorm";
 
 export const AppDataSource = new DataSource({
@@ -8,7 +7,7 @@ export const AppDataSource = new DataSource({
   username: "admin",
   password: "admin123",
   database: "rentx-api",
-  entities: ["./src/modules/**/entities/*.ts"],
+  entities: ["./src/modules/**/infra/typeorm/entities/*.ts"],
   migrations: ["./src/shared/infra/typeorm/migrations/*.ts"],
 });
 
