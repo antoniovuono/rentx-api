@@ -15,7 +15,7 @@ export function createConnection(
   host = "database_ignite"
 ): Promise<DataSource> {
   return AppDataSource.setOptions({
+    host: process.env.NODE_ENV === "test" ? "localhost" : host,
     database: process.env.NODE_ENV === "test" ? "rentx-test" : "rentx-api",
-    host,
   }).initialize();
 }
