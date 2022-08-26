@@ -10,6 +10,7 @@
     "seed:admin": "ts-node-dev src/shared/infra/typeorm/seed/admin.ts"
   },
   "dependencies": {
+    "@types/supertest": "^2.0.12",
     "bcryptjs": "^2.4.3",
     "csv-parse": "^5.3.0",
     "dayjs": "^1.11.5",
@@ -19,6 +20,7 @@
     "multer": "^1.4.5-lts.1",
     "pg": "^8.7.3",
     "reflect-metadata": "^0.1.13",
+    "supertest": "^6.2.4",
     "swagger-ui-express": "^4.5.0",
     "tsyringe": "^4.7.0",
     "typeorm": "^0.3.7",

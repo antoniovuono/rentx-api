@@ -14,5 +14,8 @@ export const AppDataSource = new DataSource({
 export function createConnection(
   host = "database_ignite"
 ): Promise<DataSource> {
-  return AppDataSource.setOptions({ host }).initialize();
+  return AppDataSource.setOptions({
+    database: process.env.NODE_ENV === "test" ? "rentx-test" : "rentx-api",
+    host,
+  }).initialize();
 }
