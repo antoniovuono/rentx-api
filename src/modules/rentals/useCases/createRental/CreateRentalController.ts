@@ -12,9 +12,9 @@ class CreateRentalController {
     const createRentalUseCase = container.resolve(CreateRentalUseCase);
 
     const rental = await createRentalUseCase.execute({
+      user_id: id,
       car_id,
       expected_return_date,
-      user_id: id,
     });
 
     return response.status(201).json(rental);
