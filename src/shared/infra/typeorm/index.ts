@@ -7,7 +7,7 @@ export const AppDataSource = new DataSource({
   username: "admin",
   password: "admin123",
   database: "rentx-api",
-  entities: ["./src/modules/**/infra/typeorm/entities/*.ts"],
+  entities: ["./src/modules/**/entities/*.ts"],
   migrations: ["./src/shared/infra/typeorm/migrations/*.ts"],
 });
 
