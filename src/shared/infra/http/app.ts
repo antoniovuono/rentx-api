@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import "reflect-metadata";
 import express, { NextFunction, Request, Response } from "express";
 import "express-async-errors";
@@ -18,7 +19,6 @@ app.use(router);
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerFile));
 
 app.use(
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   (err: Error, request: Request, response: Response, next: NextFunction) => {
     if (err instanceof AppError) {
       return response.status(err.statusCode).json({
@@ -32,13 +32,5 @@ app.use(
     });
   }
 );
-
-createConnection()
-  .then(() => {
-    console.log("Data source connected successfully");
-  })
-  .catch((error) => {
-    console.log(`Error connecting to database: ${error.message}`);
-  });
 
 export { app };
