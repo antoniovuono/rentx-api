@@ -16,6 +16,6 @@ export function createConnection(
 ): Promise<DataSource> {
   return AppDataSource.setOptions({
     host: process.env.NODE_ENV === "test" ? "localhost" : host,
-    database: process.env.NODE_ENV === "test" ? "rentx-test" : "rentx-api",
+    database: process.env.NODE_ENV === "test" ? "rentx_test" : "rentx-api",
   }).initialize();
 }
