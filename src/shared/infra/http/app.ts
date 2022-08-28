@@ -33,4 +33,12 @@ app.use(
   }
 );
 
+createConnection()
+  .then(() => {
+    console.log("Data source connected successfully");
+  })
+  .catch((error) => {
+    console.log(`Error connecting to database: ${error.message}`);
+  });
+
 export { app };
