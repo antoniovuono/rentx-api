@@ -11,6 +11,7 @@ class RentalsRepository implements IRentalsRepository {
   constructor() {
     this.repository = AppDataSource.getRepository(Rental);
   }
+
   async create(data: ICreateRentalDTO): Promise<Rental> {
     const createRental = this.repository.create(data);
 
@@ -41,6 +42,14 @@ class RentalsRepository implements IRentalsRepository {
     const rentalById = await this.repository.findOneBy({ id });
 
     return rentalById;
+  }
+
+  async listByUser(user_id: string): Promise<Rental[]> {
+    const rentalsByUser = await this.repository.find({
+      where: { user_id },
+    });
+
+    return rentalsByUser;
   }
 }
 
