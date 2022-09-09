@@ -23,7 +23,6 @@ class RentalsRepository implements IRentalsRepository {
   async findRentalByCar(car_id: string): Promise<Rental> {
     const searchByCar = await this.repository.findOneBy({
       car_id,
-      end_date: null,
     });
 
     return searchByCar;

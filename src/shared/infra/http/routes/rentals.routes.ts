@@ -17,7 +17,6 @@ rentalsRoutes.post(
   ensureAuthenticated,
   devolutionRentalController.handle
 );
-
 rentalsRoutes.get(
   "/user",
   ensureAuthenticated,
