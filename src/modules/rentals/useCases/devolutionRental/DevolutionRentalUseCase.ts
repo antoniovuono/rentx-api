@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { inject, injectable } from "tsyringe";
 
 import { IDateProvider } from "../../../../shared/container/providers/DateProvider/IDateProvider";
@@ -24,7 +25,7 @@ class DevolutionRentalUseCase {
   async execute({ id, user_id }: IRequest) {
     const rental = await this.rentalsRepository.findById(id);
     const minimun_daily = 1;
-    const car = await this.carsRepository.findById(id);
+    const car = await this.carsRepository.findById(rental.car_id);
 
     if (!rental) {
       throw new AppError("Rental does not exists!");
