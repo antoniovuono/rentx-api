@@ -20,7 +20,7 @@ export class CreateUsersToken1662847693265 implements MigrationInterface {
             type: "uuid",
           },
           {
-            name: "expeires_date",
+            name: "expires_date",
             type: "timestamp",
           },
           {
