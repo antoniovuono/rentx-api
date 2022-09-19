@@ -19,7 +19,7 @@ class refreshTokenUseCase {
     private dayjsDateProvider: IDateProvider
   ) {}
 
-  async execute(token: string) {
+  async execute(token: string): Promise<string> {
     const { email, sub } = verify(token, auth.secret_refresh_token) as IPayload;
     const user_id = sub;
 
